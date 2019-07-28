@@ -24,6 +24,8 @@ object WaterPumpApp {
 
     val inputFilePath = args(0)
     val sqlUrl = args(1)
+    var accessKey = args(2)
+    val secretKey = args(3)
 
     println("input file path : ", inputFilePath)
     println("input sql url   : ", sqlUrl)
@@ -31,8 +33,9 @@ object WaterPumpApp {
 
     val spark = SparkSession.builder().appName("SchemaInferApp").master("local[2]").getOrCreate()
 
-//    spark.sparkContext.hadoopConfiguration.set("fs.s3a.access.key", "AKIAVDTAML2YIVADET4Q")
-//    spark.sparkContext.hadoopConfiguration.set("fs.s3a.secret.key", "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")
+
+//    spark.sparkContext.hadoopConfiguration.set("fs.s3a.access.key", accessKey)
+//    spark.sparkContext.hadoopConfiguration.set("fs.s3a.secret.key", secretKey)
 //    spark.sparkContext.hadoopConfiguration.set("fs.s3a.endpoint", "s3.us-east-1.amazonaws.com")
 //    val rdd = spark.sparkContext.textFile("s3a://dikers.iot/data/water_pump_log.txt")
 
