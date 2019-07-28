@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+
+#通用数据源配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/tb_user?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+# JPA 相关配置
+  jpa:
+    show-sql: false
+  serlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 0
+      max-file-size: 20Mb
+      max-request-size: 20Mb
