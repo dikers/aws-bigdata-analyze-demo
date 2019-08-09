@@ -9,12 +9,11 @@
     <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
 
 
@@ -22,21 +21,31 @@
 <body>
 
 
-        <div class="cover-container">
+        <div class="cover-container" id="root_div">
 
 
 
 
-            <div class="row">
+            <div class="row"  >
                 <div class="col-md-3" id="chart2" style="height:250px" > </div>
                 <div class="col-md-3" id="chart3" style="height:250px" > </div>
                 <div class="col-md-3" id="chart4" style="height:250px" > </div>
                 <div class="col-md-3" id="chart5" style="height:250px" > </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">.col-md-4</div>
-                <div class="col-md-4">.col-md-4</div>
-                <div class="col-md-4">.col-md-4</div>
+            <div class="row"  >
+                <div class="col-md-6" id="chart6" style="width:50%;height:540px" ></div>
+                <div class="col-md-4" style="width:50%;height:540px"   >
+                    <div class="row"   style="height:270px"  >
+                        <div class="col-md-6" id="chart7" style="height:270px"  >aaaaa</div>
+                        <div class="col-md-6" id="chart8" style="height:270px;background: #ff00f0">bbbbb</div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" id="chart9"  style="height:270px;background: #7300ff">ccccc</div>
+                        <div class="col-md-6" id="chart10"  style="height:270px" >ddddd</div>
+                    </div>
+
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-6">.col-md-6</div>
@@ -50,7 +59,20 @@
 
 </body>
 
+
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+<script src="./map.js"></script>
 <script src="./app.js"></script>
+
+
 
 
 

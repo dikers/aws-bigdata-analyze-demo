@@ -17,6 +17,7 @@ $(function(){
     console.log("-----------------------");
     initChart1()
     initChart2()
+    initChart6()
 
 });
 
@@ -125,4 +126,3 @@ function initChart2(){
     myChart4.setOption(option);
 
 }
-
