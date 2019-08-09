@@ -1,3 +1,4 @@
+
 function initChart6(){
 
       var dom = document.getElementById("chart6");
@@ -5,13 +6,13 @@ function initChart6(){
       var app = {};
       option = null;
       var data = [
-           {name: '上海', value: 25},
-           {name: '广州', value: 38},
-           {name: '北京', value: 79},
+           {name: '上海', value: 285},
+           {name: '广州', value: 238},
+           {name: '北京', value: 289},
            {name: '深圳', value: 41},
            {name: '珠海', value: 42},
            {name: '杭州', value: 84},
-           {name: '大庆', value: 279}
+           {name: '大庆', value: 29}
       ];
       var geoCoordMap = {
           '上海':[121.48,31.22],
@@ -41,7 +42,7 @@ function initChart6(){
           title: {
               text: '各地区能耗分析',
               subtext: ' 示例数据 ',
-              sublink: 'http://www.pm25.in',
+              sublink: 'https://www.amazonaws.cn',
               left: 'center'
           },
           tooltip : {
@@ -153,7 +154,7 @@ function initChart6(){
           },
           series : [
               {
-                  name: 'pm2.5',
+                  name: '能耗',
                   type: 'scatter',
                   coordinateSystem: 'bmap',
                   data: convertData(data),
