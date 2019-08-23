@@ -16,13 +16,13 @@ create table water_pump(
     longitude decimal(8,2),
     latitude decimal(8,2),
     logTime bigint,
-    productionData integer,
-    currentData integer
+    productionDateR integer,
+    currentDate integer
 
 );
 
 
-# deviceId,waterPumpTypeId,pumpOutput,power,temperature,longitude,latitude,logTime,productionData,currentData
+# deviceId,waterPumpTypeId,pumpOutput,power,temperature,longitude,latitude,logTime,productionDate,currentDate
 
 
 ```
