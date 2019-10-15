@@ -11,21 +11,21 @@ package com.nwcd.solution.emr
       longitude decimal(8,2),
       latitude decimal(8,2),
       logTime bigint,
-      productionData integer,
-      currentData integer
+      productionDate integer,
+      currentDateRecord integer
 
 );
  */
 
 
-case class WaterPumpLogStat(deviceId: Int,
-                            waterPumpTypeId: Int,
-                            pumpOutput: Int,
+case class WaterPumpLogStat(device_id: Int,
+                            water_pump_type_id: Int,
+                            pump_output: Int,
                             power: Int,
                             temperature: Int,
                             longitude: Float,
                             latitude: Float,
                             logTime: Long,
-                            productionData: Int,
-                            currentData: Int
+                            production_date: Int,
+                            current_date_record: Int
                            )

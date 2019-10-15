@@ -20,13 +20,13 @@ object LogConvertUtil {
     longitude decimal(8,2),
     latitude decimal(8,2),
     logTime bigint,
-    productionData integer,
-    currentData integer
+    productionDate integer,
+    currentDateRecord integer
 
 );
 
 
-  deviceId,waterPumpTypeId,pumpOutput,power,temperature,longitude,latitude,logTime,productionData,currentData
+  deviceId,waterPumpTypeId,pumpOutput,power,temperature,longitude,latitude,logTime,productionDate,currentDateRecord
 
     */
 
@@ -35,16 +35,16 @@ object LogConvertUtil {
   //定义的输出的字段
   val struct = StructType(
     Array(
-      StructField("deviceId",IntegerType),
-      StructField("waterPumpTypeId",IntegerType),
-      StructField("pumpOutput",IntegerType),
+      StructField("device_id",IntegerType),
+      StructField("water_pump_type_id",IntegerType),
+      StructField("pump_output",IntegerType),
       StructField("power",IntegerType),
       StructField("temperature",IntegerType),
       StructField("longitude",FloatType),
       StructField("latitude",FloatType),
       StructField("logTime",LongType),
-      StructField("productionData",IntegerType),
-      StructField("currentData",IntegerType)
+      StructField("production_date",IntegerType),
+      StructField("current_date_record",IntegerType)
     )
   )
 
@@ -57,21 +57,21 @@ object LogConvertUtil {
     try{
       val splits = log.split(",")
 
-      val deviceId = splits(0).toInt
-      val waterPumpTypeId = splits(1).toInt
-      val pumpOutput = splits(2).toInt
+      val device_id = splits(0).toInt
+      val water_pump_type_id = splits(1).toInt
+      val pump_output = splits(2).toInt
       val power = splits(3).toInt
       val temperature = splits(4).toInt
 
       val longitude = splits(5).toFloat
       val latitude = splits(6).toFloat
       val logTime = splits(7).toLong
-      val productionData = splits(8).toInt
-      val currentData = splits(9).toInt
+      val production_date = splits(8).toInt
+      val current_date_record = splits(9).toInt
 
       //这个row里面的字段要和struct中的字段对应上
-      Row(deviceId, waterPumpTypeId, pumpOutput, power, temperature,
-        longitude, latitude, logTime, productionData, currentData )
+      Row(device_id, water_pump_type_id, pump_output, power, temperature,
+        longitude, latitude, logTime, production_date, current_date_record )
     } catch {
       case e:Exception => Row(0)
     }

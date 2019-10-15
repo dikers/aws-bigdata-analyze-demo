@@ -48,17 +48,17 @@ object WaterPumpApp {
       LogConvertUtil.struct)
 
     logDF.printSchema()
-    logDF.show(false)
-
-
-
-    /**
-      * 使用SQL的方式进行统计
-      */
-    logDF.createOrReplaceTempView("water_pump_log")
-    val videoAccessTopNDF = spark.sql("select sum(pumpOutput), sum(power),  count(*), waterPumpTypeId from water_pump_log  GROUP BY waterPumpTypeId")
-
-    videoAccessTopNDF.show(false)
+//    logDF.show(false)
+//
+//
+//
+//    /**
+//      * 使用SQL的方式进行统计
+//      */
+//    logDF.createOrReplaceTempView("water_pump_log")
+//    val videoAccessTopNDF = spark.sql("select sum(pump_output), sum(power),  count(*), water_pump_type_id from water_pump_log  GROUP BY water_pump_type_id")
+//
+//    videoAccessTopNDF.show(false)
 
 
 
@@ -78,24 +78,24 @@ object WaterPumpApp {
         val list = new ListBuffer[WaterPumpLogStat]
 
         partitionOfRecords.foreach(info => {
-          val deviceId = info.getAs[Int]("deviceId")
-          val waterPumpTypeId = info.getAs[Int]("waterPumpTypeId")
-          val pumpOutput = info.getAs[Int]("pumpOutput")
+          val device_id = info.getAs[Int]("device_id")
+          val water_pump_type_id = info.getAs[Int]("water_pump_type_id")
+          val pump_output = info.getAs[Int]("pump_output")
           val power = info.getAs[Int]("power")
           val temperature = info.getAs[Int]("temperature")
 
           val longitude = info.getAs[Float]("longitude")
           val latitude = info.getAs[Float]("latitude")
           val logTime = info.getAs[Long]("logTime")
-          val productionData = info.getAs[Int]("productionData")
-          val currentData = info.getAs[Int]("currentData")
+          val production_date = info.getAs[Int]("production_date")
+          val current_date_record = info.getAs[Int]("current_date_record")
 
           /**
             * 不建议大家在此处进行数据库的数据插入
             */
 
-          list.append(WaterPumpLogStat(deviceId,waterPumpTypeId,pumpOutput,power,temperature,
-            longitude,latitude,logTime,productionData,currentData))
+          list.append(WaterPumpLogStat(device_id,water_pump_type_id,pump_output,power,temperature,
+            longitude,latitude,logTime,production_date,current_date_record))
         })
 
         insertWaterPumpLogStat(sqlUrl, list)
@@ -120,21 +120,21 @@ object WaterPumpApp {
 
       connection.setAutoCommit(false) //设置手动提交
 
-      val sql = "insert into water_pump_log(deviceId,waterPumpTypeId,pumpOutput,power,temperature,longitude,latitude,logTime,productionData,currentData) values (?,?,?,?,?,?,?,?,?,?) "
+      val sql = "insert into water_pump_log(device_id,water_pump_type_id,pump_output,power,temperature,longitude,latitude,logTime,production_date,current_date_record) values (?,?,?,?,?,?,?,?,?,?) "
       pstmt = connection.prepareStatement(sql)
 
       for (ele <- list) {
-        pstmt.setInt(1, ele.deviceId)
-        pstmt.setLong(2, ele.waterPumpTypeId)
-        pstmt.setInt(3, ele.pumpOutput)
+        pstmt.setInt(1, ele.device_id)
+        pstmt.setLong(2, ele.water_pump_type_id)
+        pstmt.setInt(3, ele.pump_output)
         pstmt.setInt(4, ele.power)
         pstmt.setInt(5, ele.temperature)
 
         pstmt.setFloat(6, ele.longitude)
         pstmt.setFloat(7, ele.latitude)
         pstmt.setLong(8, ele.logTime)
-        pstmt.setInt(9, ele.productionData)
-        pstmt.setInt(10, ele.currentData)
+        pstmt.setInt(9, ele.production_date)
+        pstmt.setInt(10, ele.current_date_record)
         pstmt.addBatch()
       }
 
